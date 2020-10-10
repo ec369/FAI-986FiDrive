@@ -6,7 +6,7 @@ Usuario que lo carga (Seleccionar desde un Combo, los usuarios posibles son: adm
 <?php
 include_once "./estructura/cabecera.php";
 ?>
-<div id="contenido" style="height: 100%; width: 100%; border: 2px solid red; border-radius:3px;">
+<div id="contenido" style="height: 100%; width: 100%; border: 2px solid green; border-radius:3px;">
 
   <form id="form" name="form" action="accion.php" method="get" data-toggle="validator">
 

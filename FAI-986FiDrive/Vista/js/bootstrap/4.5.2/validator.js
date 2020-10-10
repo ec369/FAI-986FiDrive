@@ -14,13 +14,13 @@ $('#form').bootstrapValidator({
 
     fields: {
 
-        titulo: {
+        nombre: {
 
             validators: {
 
                 notEmpty: {
 
-                    message: 'Debe ingresar un titulo'
+                    message: 'Este campo no puede quedar vacio'
 
                 }
 
@@ -28,111 +28,52 @@ $('#form').bootstrapValidator({
 
         },
 
-        actores: {
+        descripcion: {
 
             validators: {
 
                 notEmpty: {
 
-                    message: 'Debe ingresar al menos un actor'
+                    message: 'Este campo no puede quedar vacio'
 
                 }
 
             }
 
         },
-        año: {
+        carga: {
 
             validators: {
 
                 notEmpty: {
 
-                    message: 'Debe ingresar el año'
+                    message: 'Por favor, elija una opcion'
 
                 },
 
-                stringLength: {
-                    max: 4,
-                    message: 'Maximo 4 caracteres'
-                }
-
-
-            }
+               }
         },
 
-        duracion: {
+        'seleccion[]': {
 
 
             validators: {
 
                 notEmpty: {
 
-                    message: 'Debe ingresar el año'
+                    message: 'Por favor, elija un formato'
 
                 },
-                stringLength: {
-                    max: 3,
-                    message: 'Maximo 3 caracteres'
-                }
+
+                choice: {
+                  
+                    max: 1,
+                    message: 'Solo una opcion'
+                },
+                
 
 
             }
-        },
-
-        director: {
-
-            validators: {
-
-                notEmpty: {
-
-                    message: 'Debe ingresar el director'
-
-                }
-
-            }
-
-        },
-
-        nacionalidad: {
-
-            validators: {
-
-                notEmpty: {
-
-                    message: 'Debe ingresar la nacionalidad'
-
-                }
-
-            }
-
-        },
-
-        sinopsis: {
-
-            validators: {
-
-                notEmpty: {
-
-                    message: 'Debe ingresar la nacionalidad'
-
-                }
-
-            }
-
-        },
-
-        produccion: {
-
-            validators: {
-
-                notEmpty: {
-
-                    message: 'Debe ingresar la nacionalidad'
-
-                }
-
-            }
-
         },
 
         regexp: {

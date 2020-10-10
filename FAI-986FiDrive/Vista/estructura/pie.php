@@ -1,5 +1,5 @@
 
-<div style="height: 80px; width: 100%; border: 2px solid red; border-radius: 5px;">
+<div style="height: 80px; width: 100%; border: 2px solid green; border-radius: 5px;">
 
 <footer class="footer mt-auto py-3">
     <div class="container">
@@ -21,5 +21,12 @@
 <script src="./js/bootstrap/4.5.2/bootstrapValidator.min.js"></script>
 <script src="./js/bootstrap/4.5.2/validator.js"></script>
 <script src="./js/checkbox_contraseña.js"></script>
+<script src="./js/CheckPassword.js"></script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="CheckPassword.js"></script>
+    <link href="CheckPassword.css" rel="stylesheet" />
 </body>
 </html>

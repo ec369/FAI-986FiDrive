@@ -5,7 +5,12 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
+    <!-- Me CSS -->
+    <link href="./css/4.5.2/estilo_pass.css" rel="stylesheet">
+    <link href="./css/4.5.2/CheckPassword.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+<!-- Bootstrap CSS -->
     <link href="./css/4.5.2/bootstrap.min.css" rel="stylesheet">
     </link>
 
@@ -43,6 +48,8 @@
                         Opciones
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="http://localhost/xampp/FAI-986FiDrive/Vista/contenido.php">Contenido</a>
+                    <a class="dropdown-item" href="http://localhost/xampp/FAI-986FiDrive/Vista/compartidos.php">Compartidos</a>
                         <a class="dropdown-item" href="http://localhost/xampp/FAI-986FiDrive/Vista/amarchivo.php">Alta o modificacion</a>
                         <a class="dropdown-item" href="http://localhost/xampp/FAI-986FiDrive/Vista/compartirarchivo.php">Compartir Archivos</a>
                         <a class="dropdown-item" href="http://localhost/xampp/FAI-986FiDrive/Vista/eliminararchivocompartido.php">Eliminar opcion compartir</a>

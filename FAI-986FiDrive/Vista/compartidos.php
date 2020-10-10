@@ -7,19 +7,15 @@ include_once "../Control/control_archivos.php";
 
 <?php
 $obj = new control_archivos();
-
-$respuesta2 = $obj->subir_archivo($_POST);
-
+$msg = $obj->verInformacion($_POST);
 ?>
 
+<h3>Archivos Compartidos</h3>
+<strong><?php echo $msg ?></strong>
 
-<div class="alert alert-success col-md-3 offset-md-2" role="alert">
-<h1>Archivo</h1>
-<?php echo $respuesta2 ?>
+<input type="button" value="Dejar de compartir archivo" class="button_active" onclick="location.href='eliminararchivocompartido.php';" />
+
 </div>
-
-</div>
-
 <?php
 include_once "./estructura/pie.php";
 ?>

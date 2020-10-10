@@ -42,7 +42,8 @@ include_once "./estructura/cabecera.php";
 
       <div class="col-md-3 offset-md-0 mb-3">
         <label for="carga" class="control-label">Usuario que lo carga</label><br>
-        <select name="carga">
+        <select name="carga" required>
+          <option value="">Elige una opción</option>
           <option>Admin</option>
           <option>Visitante</option>
           <option>Usted</option>
@@ -52,28 +53,49 @@ include_once "./estructura/cabecera.php";
       </div>
 
       <div class="col-md-3 mb-3">
-      <b>Proteger con contraseña?</b>
-      <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
+        <b>Proteger con contraseña?</b>
+        <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
 
-      
-        <label for="content">Contraseña</label>
-        <input type="number" class="form-control" id="content" name="content" style="display: none;">
-        <div class="invalid-feedback">
+        <div class="input-group">
+          <input type="Password" placeholder="Contraseña" class="form-control" id="content" name="content" style="display: none;" />
+          <input type="Password" placeholder="Confirmar" class="form-control" id="content2" name="content2" style="display: none;" /></input>
+
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fa fa-lock"></i></span>
+
+          </div>
+
+        </div>
+
+
+
+
+        <div id="strengthMessage">
+
         </div>
       </div>
 
-      <div class="col-md-3 mb-3">
-        <label for="compartir" class="control-label">Link para compartir generado</label>
-        <textarea class="form-control text-wrap" id="compartir" name="compartir">
+      <div class="invalid-feedback">
+      </div>
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+    <div class="col-md-3 mb-3">
+      <label for="compartir" class="control-label">Link para compartir generado</label>
+      <textarea class="form-control text-wrap" id="compartir" name="compartir">
           </textarea>
-          <input id="btn_eje4" class="btn btn-primary" name="btn_eje4" type="submit" value="Generar HASH">
-        <div class="invalid-feedback">
-        </div>
+      <input id="btn_eje4" class="btn btn-primary" name="hash" id="hash" type="submit" value="Generar HASH">
+      <div class="invalid-feedback">
       </div>
-
-  
-
-
     </div>
 
     <div class="row">
@@ -82,12 +104,15 @@ include_once "./estructura/cabecera.php";
 
       </div>
       <div class="">
-        <input id="btn_eje4" class="btn btn-primary" name="btn_eje4" type="submit" value="Enviar">
-        <input id="btn_eje4" class="btn btn-primary" name="btn_eje4" type="reset" value="Borrar">
+        <!-- <input id="btn_eje4" class="btn btn-primary" name="btn_eje4" type="submit" value="Enviar">
+        <input id="btn_eje4" class="btn btn-primary" name="btn_eje4" type="reset" value="Borrar"> -->
 
       </div>
     </div>
 
+
+
+    
 
   </form>
 </div>
