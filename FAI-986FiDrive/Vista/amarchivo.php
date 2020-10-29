@@ -30,7 +30,7 @@ include_once "../Control/control_archivos.php";
 
       <div class="col-md-3 mb-3">
         <label for="descripcion" class="control-label">Descripcion del Archivo</label>
-        <textarea id="acdescripcion" name="acdescripcion" required></textarea>
+        <textarea id="summernote" name="acdescripcion" required></textarea>
         <div class="invalid-feedback"></div>
       </div>
 
