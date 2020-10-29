@@ -16,6 +16,8 @@ $obj = new control_archivos();
 $objarchivo_eliminar=new abmarchivocargado;
 $objarchivo_estado=new abmarchivocargadoestado;
 
+$hash=md5(serialize($datos));
+
 $buscado=$objarchivo_eliminar->buscar2($datos);
 $archivocargado=$buscado[0];
 $id=$archivocargado->getidarchivocargado();
@@ -30,11 +32,12 @@ if($objarchivo_estado->modificacion_estado($datos)){
     echo "entro modificacion estado";
     $resp=true;
     //$objarchivo_eliminar->baja($datos);
-    $msg=$obj->eliminar_dir($datos);
-    
-    
-  
+   // $msg=$obj->eliminar_dir($datos);
+
+   
 }
+
+
 if($resp){
     $msg = "La accion se realizo correctamente.";
     }else {
@@ -48,7 +51,10 @@ if($resp){
 
 <div class="alert alert-success col-md-3 offset-md-2" role="alert">
     <h1></h1>
-<?php echo $msg ?>
+<?php echo $msg  ?><br>
+<?php echo "HASH GENERADO: ". $hash ?>
+
+
 </div>
 
 

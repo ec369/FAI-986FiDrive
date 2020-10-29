@@ -3,22 +3,22 @@
 <head>
     <!-- Required meta tags -->
 
+
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Me CSS -->
-    <link href="./css/4.5.2/estilo_pass.css" rel="stylesheet">
-    <link href="./css/4.5.2/CheckPassword.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     
-<!-- Bootstrap CSS -->
-    <link href="./css/4.5.2/bootstrap.min.css" rel="stylesheet">
-    </link>
+    <!-- Bootstrap CSS -->
+    <link href="./css/4.5.2/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/bootstrapValidator.min.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 
-    <link href="./css/4.5.2/bootstrapValidator.min.css" rel="stylesheet">
-    </link>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet">
+    <!-- Me CSS -->
+    <link href="./css/4.5.2/estilo_pass.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/CheckPassword.css" rel="stylesheet"></link>
 
-    </link>
+    
 
 </head>
 
