@@ -1,0 +1,76 @@
+354749088187632/01
+sn
+r28j51aj4np
+AC 986 AM
+Movistar
+Tu cuenta de correo institucional es: erick.calderon@est.fi.uncoma.edu.ar, la contraseña inicial es tu DNI ( sin puntos )
+
+Tu usuario para las Aulas/Laboratorios (Linux) es: erick.calderon, la contraseña inicial es tu DNI ( sin puntos )
+
+Tu usuario de laboratorio también sirve para conectarte a las redes wifi de la facultad: INFORMATICA-WiFi
+
+
+42849   legajo
+
+TECNICA
+INTRODUCCION A LAS BASES DE DATOS
+MEP LABORATORIO BD
+MEP LABORATORIO REDES
+MEP SO
+MEP COMPUTACION-INFORMATICA
+PRECEPTOR 
+SEGURIDAD INFORMATICA
+SISTEMAS OPERATIVOS
+TECNOLOGIA DE REDES
+COMPUTACION-INFORMAT. - TALLER COMP. - OPI - INTROD. A LA INFORM./COMP.
+
+MEDIA
+COMPUTACION-INFORMAT. - TALLER COMP. - OPI - INTROD. A LA INFORM./COMP
+PRECEPTOR
+
+79067765 heladera +542995904690
+
+Cpem N 60
+Informatica I - 4hs - Lunes de 21 a 22 y Martes de 19:30 a 20:50 - Interino - Colon N 775
+
+Lunes:
+
+9:30 a 10:50hs   	 (Bases de Datos 4ª3)
+17:10 a 18:30hs   	 (Tecnologia de Redes II 6ª1º) (Cambian a Martes 13:30 a 14:50)
+21:00 a 22:20		 (Informatica I 1ºD)
+22:50 a 23:25hs	  	 (Introduccion a la Computacion)   (Pasa al viernes)
+
+Martes:
+
+9:30 a 10:50hs	 	 (Bases de Datos  4º1)
+17:50 a 18:30	  	 (Sistemas Operativos 6º1)
+19:30 a 20:50		 (Informatica I 1ºD)
+22:50 a 23:25	 	 (Introduccion a la computacion)
+
+Miercoles: 
+
+9:30 a 10:50hs		 (Bases de Datos 4ª3)
+11:00 a 12:20	  	 (Sistemas Operativos 6º2)
+16:30 a 17:10	 	 (Sistemas Operativos 6º1)
+
+Jueves:
+
+11:00 a 12:20hs		 (Bases de Datos  4º1)
+19 a 19:35		 (Introduccion a la computacion)
+
+Viernes:
+
+9:30 a 10:50hs		 (Sistemas Operativos 6º2)
+15:00 a 16:20		 (Sistemas Operativos 6º1)
+16:30 a 17:50hs		 (Tecnologia de Redes II 6ª1º)     (CAMBIO A 13:30 A 14:50)
+20:20 a 20:55		 (Introduccion a la computacion)   (CAMBIO 20:55 A 22:15)
+
+
+
+
+
+
+
+
+
+
