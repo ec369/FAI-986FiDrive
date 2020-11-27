@@ -56,16 +56,20 @@ echo "Tu edad: $edad<p>";
       </div>
 
       <div class="col-md-3 mb-3">
-        <?php
-        $select = new abmusuario();
-        $objSelect = $select->buscar(null);
+      <?php
+         foreach($sesion->getUsuario2() as $unObjeto1){
+          $id=$unObjeto1->getidusuario();
+         echo "<input id='idusuario' name='idusuario' type='hidden' value='".$id."'>";
+           }
+      //  $select = new abmusuario();
+        //$objSelect = $select->buscar(null);
 
-        echo  " <select class='form-control' name='idusuario' id='idusuario'>";
-        echo  " <option value=' '>Seleccion un Usuario</option>";
-        foreach ($objSelect as $unObjeto) {
-          echo  " <option name='idusuario' id='idusuario' value='" . $unObjeto->getidusuario() . "'>" . $unObjeto->getusapellido() . "</option>";
-        }
-        echo  " </select>";
+       // echo  " <select class='form-control' name='idusuario' id='idusuario'>";
+       // echo  " <option value=' '>Seleccion un Usuario</option>";
+        //foreach ($objSelect as $unObjeto) {
+          //echo  " <option name='idusuario' id='idusuario' value='" . $unObjeto->getidusuario() . "'>" . $unObjeto->getusapellido() . "</option>";
+        //}
+        //echo  " </select>";
         ?>
         <div class="invalid-feedback">
 
