@@ -3,6 +3,25 @@
 // include_once "../Control/abmarchivocargado.php";
 include_once "../Vista/estructura/cabecera.php";
 
+
+foreach ($sesion->getrol() as $unObjetorol) {
+    //echo "acaaaa objeto";
+      //echo print_r($unObjeto1);
+      $rol = $unObjetorol->getobjrol();
+     //echo "acaaaa objeto rolopoooooooooooooo";
+     //echo print_r ($rol);
+     $idrol=$rol->getidrol();
+  
+     echo "acaaaa id rolaso". $idrol;
+  
+      //echo "<input id='idusuario' name='idusuario' type='hidden' value='" . $id . "'>";
+   
+    }
+  
+
+if ($idrol==1){
+    
+
 $objusuario = new abmusuario();
 $objusuariorol = new abmusuariorol();
 $datos = data_submitted();
@@ -33,6 +52,10 @@ if (isset($datos['idusuario'])){
 
     }
 }
+}else{
+    header("Location:../Vista/login.php");
+}
+
 
 ?>	
 <!-- <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//ES" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

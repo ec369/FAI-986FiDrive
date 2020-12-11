@@ -55,7 +55,7 @@ class abmusuariorol{
      */
     public function alta($param){
         $resp = false;
-        $param['idusuario'] =null;
+        //$param['idusuario'] =null;
         $elObjtusuariorol = $this->cargarObjeto($param);
 //        verEstructura($elObjtusuariorol);
         if ($elObjtusuariorol!=null and $elObjtusuariorol->insertar()){

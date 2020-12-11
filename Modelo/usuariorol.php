@@ -80,7 +80,8 @@ class usuariorol{
     public function insertar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="INSERT INTO `usuariorol` (`idusuario`, `idrol`)  VALUES(".$this->getobjusuario().",".$this->getobjrol().");";
+        $sql="INSERT INTO usuariorol (idusuario, idrol)  VALUES('".$this->getobjusuario()."','".$this->getobjrol()."');";
+       echo $sql;
         if ($base->Iniciar()) {
             if ($elid = $base->Ejecutar($sql)) {
                 //$this->setidUnidad($elid);

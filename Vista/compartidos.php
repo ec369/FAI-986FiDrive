@@ -90,8 +90,9 @@ echo "acaaa id". $id;
             '<td style="width:100px;">' . $objarchivocargado->getacdescripcion() .
             '<td style="width:100px;">' . $objarchivocargado->getacicono() .
            // '<td style="width:100px;">' . $objarchivocargado->getidusuario() .
+           '<td><a href="./descargacompartido.php?acaccesolink='.$objarchivocargado->getacnombre().'&acprotegidoclave='.$objarchivocargado->getacprotegidoclave().'&idarchivocargado='.$objarchivocargado->getidarchivocargado().'""><b>'.$objarchivocargado->getaclinkacceso().'</b></a></td>'.
 
-            '<td><a href="../archivos/'.$objarchivocargado->getacnombre().'">'.$objarchivocargado->getaclinkacceso().'</a></td>'.
+          //  '<td><a href="../archivos/'.$objarchivocargado->getacnombre().'">'.$objarchivocargado->getaclinkacceso().'</a></td>'.
             '<td style="width:100px;">' . $objarchivocargado->getaccantidaddescarga() .
             '<td style="width:100px;">' . $objarchivocargado->getaccantidadusada() .
             '<td style="width:100px;">' . $objarchivocargado->getacfechainiciocompartir() .
@@ -117,7 +118,7 @@ echo "acaaa id". $id;
         <th>Cantidad de descargas Usadas</th>
         <th>Fecha Inicio Compartir</th>
         <th>Fecha Fin Compartir</th>
-        <th>Protegido con Clave</th>
+      
         <th>Other</th>
         </tr>
         </thead>';
@@ -128,14 +129,16 @@ echo "acaaa id". $id;
             '<td style="width:100px;">' . $objarchivocargado->getacdescripcion() .
             '<td style="width:100px;">' . $objarchivocargado->getacicono() .
             '<td style="width:100px;">' . $objarchivocargado->getidusuario() .
+            '<td><a href="./descargacompartido.php?acaccesolink='.$objarchivocargado->getacnombre().'&acprotegidoclave='.$objarchivocargado->getacprotegidoclave().'&idarchivocargado='.$objarchivocargado->getidarchivocargado().'""><b>'.$objarchivocargado->getaclinkacceso().'</b></a></td>'.
 
-            '<td><a href="../archivos/'.$objarchivocargado->getacnombre().'">'.$objarchivocargado->getaclinkacceso().'</a></td>'.
+
+            //'<td><a href="../archivos/'.$objarchivocargado->getacnombre().'">'.$objarchivocargado->getaclinkacceso().'</a></td>'.
             
             '<td style="width:100px;">' . $objarchivocargado->getaccantidaddescarga() .
             '<td style="width:100px;">' . $objarchivocargado->getaccantidadusada() .
             '<td style="width:100px;">' . $objarchivocargado->getacfechainiciocompartir() .
             '<td style="width:100px;">' . $objarchivocargado->getacefechafincompartir() .
-            '<td style="width:100px;">' . $objarchivocargado->getacprotegidoclave() .
+           // '<td style="width:100px;">' . $objarchivocargado->getacprotegidoclave() .
             '</td>';
 
          // echo '<td> <input type="radio" onchange="capturar_radio()" id="datos" name="acnombre" value="' . $objarchivocargado->getacnombre() .'"><b>DEJAR DE COMPARTIR<b></td></tr>';

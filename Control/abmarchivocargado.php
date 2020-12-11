@@ -155,6 +155,21 @@ class abmarchivocargado{
         return $resp;
     }
 
+    public function modificacion_descargasusadas($param){
+        echo "Estoy en modificacion";
+        //echo print_r($param);
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            echo "setea campos clave";
+          $elObjtarchivocargado = $this->cargarObjeto($param);
+          //echo print_r($elObjtarchivocargado);
+            if($elObjtarchivocargado!=null and $elObjtarchivocargado->modificar_descargasusadas()){
+                $resp = true;
+            }
+        }
+        return $resp;
+    }
+
     public function modificacion_fechafincompartir($param){
         echo "Estoy en modificacion fecha fin";
         //echo print_r($param);

@@ -23,6 +23,9 @@ if ($datos['idrol']=='Admin'){
        // $msg=$obj->editar_dir($datos);
        //echo "acaaaa respuesta";
       // echo $resp;
+    }else{
+        $resp=true;
+        $objusuariorol->alta($datos);
     }
 }else{
     $datos['idrol']=2;
@@ -32,6 +35,9 @@ if ($datos['idrol']=='Admin'){
        // $msg=$obj->editar_dir($datos);
        //echo "acaaaa respuesta";
       // echo $resp;
+    } else{
+        $resp=true;
+        $objusuariorol->alta($datos);
     }
 }
 

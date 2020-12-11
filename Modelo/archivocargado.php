@@ -275,12 +275,30 @@ class archivocargado {
         return $resp;
     }
 
+    public function modificar_descargasusadas(){
+        $resp = false;
+        $base=new BaseDatos();
+     
+        $sql="UPDATE archivocargado SET accantidadusada='".$this->getaccantidadusada()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
+      echo $sql;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
+
     
     public function modificar_fincompartir(){
         $resp = false;
         $base=new BaseDatos();
      
-        $sql="UPDATE archivocargado SET acefechafincompartir='".$this->getacefechafincompartir()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
+        $sql="UPDATE archivocargado SET acefechafincompartir='".$this->getacefechafincompartir()."', accantidadusada='".$this->getaccantidadusada()."'  WHERE idarchivocargado='".$this->getidarchivocargado()."'";
       echo $sql;
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {
