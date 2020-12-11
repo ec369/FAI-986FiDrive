@@ -5,17 +5,40 @@ include_once "./estructura/cabecera.php";
 // include_once '../configuracion.php';
 $datos = data_submitted();
 //echo "data_sbumitedd";
-//echo print_r($datos);
+echo print_r($datos);
 ?>
 <div id="contenido" style="height: 100%; width: 100%; border: 2px solid green; border-radius:3px;">
 
 <?php
 $resp=false;
 $obj = new control_archivos();
-$objarchivo_editar=new abmarchivocargado;
+$objusuario=new abmusuario;
+$objusuariorol=new abmusuariorol;
+
+if ($datos['idrol']=='Admin'){
+    $datos['idrol']=1;
+    if($objusuariorol->modificacion($datos)){
+        echo "entro modificacion activo";
+        $resp=true;
+       // $msg=$obj->editar_dir($datos);
+       //echo "acaaaa respuesta";
+      // echo $resp;
+    }
+}else{
+    $datos['idrol']=2;
+    if($objusuariorol->modificacion($datos)){
+        echo "entro modificacion activo";
+        $resp=true;
+       // $msg=$obj->editar_dir($datos);
+       //echo "acaaaa respuesta";
+      // echo $resp;
+    }
+}
+
+
 //echo print_r($objarchivo_editar);
-if($objarchivo_editar->modificacion($datos)){
-    echo "entro modificacion";
+if($objusuario->modificacion($datos)){
+    echo "entro modificacion activo";
     $resp=true;
    // $msg=$obj->editar_dir($datos);
    //echo "acaaaa respuesta";

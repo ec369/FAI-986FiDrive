@@ -15,13 +15,13 @@ class abmarchivocargado{
            //echo print_r($param);
         if( array_key_exists('idarchivocargado',$param)){
             $obj = new archivocargado();
-     
-          $param['aclinkacceso']="www.prueba.com";
-          $param['accantidaddescargas']=3;
-          $param['accantidadusada']=3;
-          $param['acfechainiciocompartir']="1992-05-27";
-          $param['acfechafincompartir']="1994-05-27";
-            $obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'],$param['acicono'],$param['idusuario'], $param['aclinkacceso'], $param['accantidaddescargas'], $param['accantidadusada'], $param['acfechainiciocompartir'],$param['acfechafincompartir'], $param['acprotegidoclave']);
+            
+        //   $param['aclinkacceso']="";
+        //   $param['accantidaddescargas']="";
+        //   $param['accantidadusada']="";
+        //   $param['acfechainiciocompartir']="";
+        //   $param['acfechafincompartir']="";
+            $obj->setear($param['idarchivocargado'], $param['acnombre'], $param['acdescripcion'],$param['acicono'],$param['idusuario'], $param['aclinkacceso'], $param['accantidaddescarga'], $param['accantidadusada'], $param['acfechainiciocompartir'],$param['acefechafincompartir'], $param['acprotegidoclave']);
            
         }
         return $obj;
@@ -140,6 +140,35 @@ class abmarchivocargado{
         return $resp;
     }
 
+    public function modificacion_cantdescargas($param){
+        echo "Estoy en modificacion";
+        //echo print_r($param);
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            echo "setea campos clave";
+          $elObjtarchivocargado = $this->cargarObjeto($param);
+          //echo print_r($elObjtarchivocargado);
+            if($elObjtarchivocargado!=null and $elObjtarchivocargado->modificar_cantdescargas()){
+                $resp = true;
+            }
+        }
+        return $resp;
+    }
+
+    public function modificacion_fechafincompartir($param){
+        echo "Estoy en modificacion fecha fin";
+        //echo print_r($param);
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            echo "setea campos clave";
+          $elObjtarchivocargado = $this->cargarObjeto($param);
+          //echo print_r($elObjtarchivocargado);
+            if($elObjtarchivocargado!=null and $elObjtarchivocargado->modificar_fincompartir()){
+                $resp = true;
+            }
+        }
+        return $resp;
+    }
 
     
     /**
@@ -167,31 +196,61 @@ class abmarchivocargado{
         if ($param<>NULL){
        //   echo "no es nulo";
             if  (isset($param['acnombre']))
-                $where.=" and acnombre ='".$param['acnombre']."'";
-           
+                $where.=" and acnombre ='".$param['acnombre']."' and idusuario ='".$param['idusuario']."'  ";
+           //echo $where;
         }
         $arreglo = archivocargado::listar($where);  
         return $arreglo;
          
     }
 
+    
+    public function buscar_id($param){
+    
+        $where = " true ";
+        if ($param<>NULL){
+          
+            if  (isset($param['idarchivocargado']))
+                $where.=" and idarchivocargado='".$param['idarchivocargado']."'";
+           
+        }
+        $arreglo = archivocargadoestado::listar($where);  
+        return $arreglo;
+            
+    }
+
 
     public function buscar_compartido($param){
     
-        $where = " true ";
+        $id=$param;
+    echo "aca id buscado".$id;
         if ($param<>NULL){
        //   echo "no es nulo";
             if  (isset($param['acnombre']))
                 $where.=" and acnombre ='".$param['acnombre']."'";
            
         }
-        $arreglo = archivocargado::listar_compartido($where);  
+        $arreglo = archivocargado::listar_compartido($id);  
+        return $arreglo;
+         
+    }
+
+    public function buscar_compartido_admin(){
+    
+       $where="true";
+        if ($param<>NULL){
+       //   echo "no es nulo";
+            if  (isset($param['acnombre']))
+                $where.=" and acnombre ='".$param['acnombre']."'";
+           
+        }
+        $arreglo = archivocargado::listar_compartido_admin($where);  
         return $arreglo;
          
     }
 
     public function buscar_disponibles($param){
-    
+        
         $where = " true ";
         if ($param<>NULL){
        //   echo "no es nulo";
@@ -199,7 +258,7 @@ class abmarchivocargado{
                 $where.=" and acnombre ='".$param['acnombre']."'";
            
         }
-        $arreglo = archivocargado::listar_disponible($where);  
+        $arreglo = archivocargado::listar_disponible($param);  
         return $arreglo;
          
     }

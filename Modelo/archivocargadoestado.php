@@ -157,8 +157,7 @@ class archivocargadoestado {
                     $objarchivocargado=new archivocargado();
                     $objarchivocargado->setidarchivocargado($row['idarchivocargado']);
                     $objarchivocargado->cargar();
-                    $this->setear($row['idarchivocargadoestado'], $objestadotipo , $row['acedescripcion'], $objusuario, $row['acefechaingreso'],
-                     $row['acefechafin'],$objarchivocargado);
+                    $this->setear($row['idarchivocargadoestado'], $objestadotipo , $row['acedescripcion'], $objusuario, $row['acefechaingreso'], $row['acefechafin'],$objarchivocargado);
                     
                 }
             }
@@ -218,6 +217,24 @@ class archivocargadoestado {
         $base=new BaseDatos();
      
         $sql="UPDATE archivocargadoestado SET idestadotipos='".$this->getidestadotipos()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
+     echo $sql;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
+
+    public function modificar_fechafin(){
+        $resp = false;
+        $base=new BaseDatos();
+     
+        $sql="UPDATE archivocargadoestado SET acefechafin='".$this->getacefechafin()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
      echo $sql;
         if ($base->Iniciar()) {
             if ($base->Ejecutar($sql)) {

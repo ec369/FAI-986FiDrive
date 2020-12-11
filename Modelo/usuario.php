@@ -143,7 +143,46 @@ class usuario {
         $sql=" SELECT * from usuario ";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
-         //   echo $sql;
+          //echo $sql;
+        }
+        $res = $base->Ejecutar($sql);
+        if($res>-1){
+            if($res>0){
+                
+                while ($row = $base->Registro()){
+                    $obj= new usuario();
+                    // $obj2= new auto;
+                    // $obj2->setpatente($row ['Patente']);
+                    // $obj2->setmarca($row ['Marca']);
+                    // $obj2->setmodelo($row ['Modelo']);
+                    // $obj2->cargar();
+                    // $patente=$obj2->getpatente();
+                    // $marca=$obj2->getmarca();
+                    // $modelo=$obj2->getmodelo();
+                
+                    $obj->setear($row['idusuario'], $row['usnombre'], $row['usapellido'], $row['uslogin'], $row['usclave'], $row['usactivo']);
+                    array_push($arreglo, $obj);
+                    
+             
+                }
+               
+            }
+            
+        } else {
+        //    $this->setmensajeoperacion("Tabla->listar: ".$base->getError());
+        
+        }
+ 
+        return $arreglo;
+    }
+
+    public static function listar_ac($parametro=""){
+        $arreglo = array();
+        $base=new BaseDatos();
+        $sql=" SELECT * from usuario ";
+        if ($parametro!="") {
+            $sql.='WHERE '.$parametro.'and usuario.usactivo=1';
+          echo $sql;
         }
         $res = $base->Ejecutar($sql);
         if($res>-1){
@@ -214,7 +253,23 @@ class usuario {
     }
 
        
-    
+    public function modificar_activo(){
+        $resp = false;
+        $base=new BaseDatos();
+     
+        $sql="UPDATE usuario SET usactivo='".$this->getusactivo()."' WHERE idusuario='".$this->getidusuario()."'";
+     echo $sql;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
 }
 
 

@@ -27,18 +27,22 @@ function __autoload($class_name){
     //echo "class ".$class_name ;
     //echo "entraa";
     $directorys = array(
-        $_SESSION['ROOT'].'util/',
-        $_SESSION['ROOT'].'Modelo/',  
-        $_SESSION['ROOT'].'Modelo/conector/',
-        $_SESSION['ROOT'].'Control/',
-      //  $GLOBALS['ROOT'].'util/class/',
+        $GLOBALS['ROOT'].'util/',
+        $GLOBALS['ROOT'].'Modelo/',  
+        $GLOBALS['ROOT'].'Modelo/conector/',
+        $GLOBALS['ROOT'].'Control/',
+        $GLOBALS['ROOT'].'Vista/',
+        $GLOBALS['ROOT'].'Vista/js/',
+        $GLOBALS['ROOT'].'Vista/js/bootstrap/',
+        $GLOBALS['ROOT'].'Vista/js/4.5.2/',
+      //  $GLOBALSS['ROOT'].'util/class/',
         
     );
     //echo print_r ($directorys);
     //print_object($directorys) ;
     foreach($directorys as $directory){
         if(file_exists($directory.$class_name . '.php')){
-            // echo "se incluyo".$directory.$class_name . '.php';
+           //  echo "se incluyo".$directory.$class_name . '.php';
             require_once($directory.$class_name . '.php');
             return;
         }

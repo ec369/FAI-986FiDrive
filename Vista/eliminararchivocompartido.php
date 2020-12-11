@@ -5,9 +5,9 @@ Usuario que lo carga (Seleccionar desde un Combo, los usuarios posibles son: adm
  -->
 <?php
 include_once "./estructura/cabecera.php";
-include_once "../Control/abmusuario.php";
+// include_once "../Control/abmusuario.php";
 ?>
-<div id="contenido" style="height: 100%; width: 100%; border: 2px solid green; border-radius:3px;">
+<div id="contenido" style="height: 100%; width: 90%; margin-left: auto; border: 0px solid green; border-radius:3px;">
 
   <form id="form" name="form" action="accion_dejarcompartir.php" method="get" data-toggle="validator">
 
@@ -17,7 +17,7 @@ include_once "../Control/abmusuario.php";
 
       <?php
 $edad = $_GET["idarchivocargado"]; 
-echo "Tu edad: $edad<p>"; 
+//echo "Tu edad: $edad<p>"; 
 ?>
   <div class="col-md-0 mb-1">
         <label for="clave" class="control-label"> </label>
@@ -40,16 +40,31 @@ echo "Tu edad: $edad<p>";
         </div>
       </div>
 
+      <?php
+      $objarchivocargado = new abmarchivocargado();
+      foreach ($sesion->getUsuario2() as $unObjeto1) {
+        $id = $unObjeto1->getidusuario();
+       
+      }
+      // $objuser=$asd[0];
+      foreach ($objarchivocargado->buscar_compartido($id) as $unObjeto1) {
+        $cantusada = $unObjeto1->getaccantidadusada();
+       // echo "acaaa". $cantusada;
+       // echo "<input id='accantidadusada' name='accantidadusada' type='hidden' value='" . $cantusada . "'>";
+      }
+
+      ?>
+
       <div class="col-md-2 mb-3">
         <label for="compartio">Cantidad de veces que se compartio</label>
-        <input type="number" class="form-control" id="compartio" name="compartio" >
+        <input type="number" class="form-control" id="accantidadusada" name="accantidadusada" value="<?php echo $cantusada ?>">
         <div class="invalid-feedback">
         </div>
       </div>
 
       <div class="col-md-3 mb-3">
         <label for="nocompartir" class="control-label">Motivo de ya no compartir el Archivo</label>
-        <textarea class="form-control text-wrap" id="nocompartir" name="nocompartir">
+        <textarea class="form-control text-wrap" id="acdescripcion" name="acdescripcion">
           </textarea>
         <div class="invalid-feedback">
         </div>

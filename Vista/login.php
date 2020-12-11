@@ -13,44 +13,66 @@ letras y números). -->
 <?php
 //include_once "./estructura/cabecera.php";
 ?>
+<html>
 
+<head>
+    <!-- Required meta tags -->
+    <!-- <a href="./cerrar_session.php">Cerrar Sesion </a> -->
 
-<div id="contenido" style="height: 100%; width: 100%; border: 2px solid red; border-radius:3px;">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <!-- Bootstrap CSS -->
+    <link href="./css/4.5.2/bootstrap.min.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/bootstrapValidator.min.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/estilo_tablas.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/estilo_login.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet"></link>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+
+    <!-- Me CSS -->
+    <link href="./css/4.5.2/estilo_pass.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/CheckPassword.css" rel="stylesheet"></link>
+
+    
+
+</head>
+
+<div id="contenido" style="height: 100%;  margin-left: auto; border: 0px solid green; border-radius:3px;">
 
 
 
 
 	<form id="loginForm" name="loginForm" method="post" data-toggle="validator" action="./accion_verificarlogin.php" >
 
-	<div class="imgcontainer">
-    <img src="./img/login_logo.png" alt="Avatar" class="avatar">
-  	</div>
+	
 
-		<div class="form-group">
+	  <div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
 
-			<label class="col-md-3 control-label">Nombre de Usuario</label>
+    <!-- Icon -->
+    <div class="fadeIn first">
+      <img src="./img/login.png"    id="icon" alt="User Icon" />
+    </div>
 
-			<div class="col-md-7">
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" name="usnombre" class="fadeIn second" name="login" placeholder="Usuario" required>
+      <input type="password" class="form-control" id="password" name="usclave"  name="login" placeholder="Contraseña" required>
+      <input type="submit" name="accion" class="fadeIn fourth" value="Iniciar Sesion" >
+    </form>
 
-				<input type="text" class="form-control" id="usnombre" name="usnombre" required>
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="../Vista/nuevousuario.php">Registrarse</a>
+    </div>
 
-			</div>
+  </div>
+</div>
 
-		</div>
-
-		<div class="form-group">
-
-			<label class="col-md-3 control-label">Contraseña</label>
-
-			<div class="col-md-7">
-
-				<input type="password" class="form-control" id="usclave" name="usclave"  required>
-
-			</div>
-
-		</div>
-
-		<div class="form-group">
+		<!-- <div class="form-group">
 
 			<div class="col-md-5 col-md-offset-3">
 
@@ -58,7 +80,7 @@ letras y números). -->
 			<a href="../Vista/nuevousuario.php">Crear cuenta</a>
 
 			</div>
-		</div>
+		</div> -->
 
 
 
@@ -70,8 +92,3 @@ letras y números). -->
 
 
 
-
-
-<?php
-include_once "./estructura/pie.php";
-?>

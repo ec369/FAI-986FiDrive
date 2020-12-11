@@ -14,8 +14,8 @@ class abmarchivocargadoestado{
           // echo print_r($param);
         if( array_key_exists('idarchivocargadoestado',$param) and array_key_exists('idestadotipos',$param)){
             $obj = new archivocargadoestado();
-            $param['acefechaingreso']="1992-05-27";
-            $param['acefechafin']="1994-05-27";
+          //  $param['acefechaingreso']="1992-05-27";
+          //  $param['acefechafin']="1994-05-27";
             $obj->setear($param['idarchivocargadoestado'], $param['idestadotipos'], $param['acedescripcion'], $param['idusuario'], $param['acefechaingreso'], $param['acefechafin'], $param['idarchivocargado']);
         }
         return $obj;
@@ -109,15 +109,31 @@ class abmarchivocargadoestado{
     }
 
     public function modificacion_estado($param){
-        echo "Estoy en modificacion";
+        //echo "Estoy en modificacion";
       //  echo print_r($param);
         $resp = false;
         
         if ($this->seteadosCamposClaves($param)){
-            echo "setea campos claveeee";
+           // echo "setea campos claveeee";
           $elObjtarchivocargado = $this->cargarObjeto($param);
           //echo print_r($elObjtarchivocargado);
             if($elObjtarchivocargado!=null and $elObjtarchivocargado->modificar_estado()){
+                $resp = true;
+            }
+       }
+        return $resp;
+    }
+
+    public function modificacion_fechafin($param){
+        //echo "Estoy en modificacion";
+      //  echo print_r($param);
+        $resp = false;
+        
+        if ($this->seteadosCamposClaves($param)){
+           // echo "setea campos claveeee";
+          $elObjtarchivocargado = $this->cargarObjeto($param);
+          //echo print_r($elObjtarchivocargado);
+            if($elObjtarchivocargado!=null and $elObjtarchivocargado->modificar_fechafin()){
                 $resp = true;
             }
        }

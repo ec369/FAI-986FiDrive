@@ -67,13 +67,13 @@ class estadotipos {
     public function cargar(){
         $resp = false;
         $base=new BaseDatos();
-        $sql="SELECT * FROM persona WHERE idestadotipos = ".$this->getidestadotipos();
+        $sql="SELECT * FROM estadotipos WHERE idestadotipos = ".$this->getidestadotipos();
         if ($base->Iniciar()) {
             $res = $base->Ejecutar($sql);
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
-                    $this->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo'], $row[''], $row[''], $row['']);
+                    $this->setear($row['idestadotipos'], $row['etdescripcion'], $row['etactivo']);
                     
                 }
             }
@@ -90,7 +90,7 @@ class estadotipos {
     public static function listar($parametro=""){
         $arreglo = array();
         $base=new BaseDatos();
-        $sql=" SELECT DISTINCT persona.etactivo, persona.idestadotipos, persona.etdescripcion, persona., persona., persona. from auto INNER JOIN persona on auto.DniDuenio=persona.idestadotipos ";
+        $sql=" SELECT DISTINCT estadotipos.etactivo, estadotipos.idestadotipos, estadotipos.etdescripcion from estadotipos";
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
          //   echo $sql;

@@ -1,28 +1,28 @@
 <?php 
-include_once '../configuracion.php';
+include_once '../../configuracion.php';
 $datos = data_submitted();
 //verEstructura($datos);
 $resp = false;
-$objusuario = new abmusuario();
-$buscado=$objusuario->buscarlogin($datos);
-$clave=$datos['usclave'];
-$datos['usclave']=md5($clave);
-    if($datos['accion']=='nuevo'){
-        if (count($buscado)>0){
+$objrol = new abmrol();
 
-        }else{
-        if($objusuario->alta($datos))
-            $resp =true;
+//$objTrans = new Abmauto();
+if (isset($datos['accion'])){
+    echo "entra";
+    if($datos['accion']=='editar'){
+        echo "epa";
+        if($objrol->modificacion($datos)){
+            $resp = true;
         }
-
-
     }
- 
+  
+
+}
     if($resp){
         $mensaje = "La accion ".$datos['accion']." se realizo correctamente.";
     }else {
-        $mensaje = "La accion ".$datos['accion']." no pudo concretarse. Nombre de usuario no disponible";
+        $mensaje = "La accion ".$datos['accion']." no pudo concretarse.".'<a href="../nuevaPersona.php">REGISTRARSE</a>';
     }
+    
     
 
 
@@ -35,7 +35,7 @@ $datos['usclave']=md5($clave);
 </head>
 <body>
 <h3>Tabla</h3>
-<br><a href="../Vista/nuevousuario.php">Volver</a><br>
+<br><a href="../listarrol.php">Volver</a><br>
 
 <?php	
 echo $mensaje;
@@ -43,6 +43,5 @@ echo $mensaje;
 
 </body>
 </html>
-
 
 

@@ -1,26 +1,43 @@
 <?php
 include_once '../configuracion.php';
 $sesion=new session();
-$varsesion=$_SESSION['usnombre'];
-if ($varsesion==null || $varsesion =''){
-    echo "que onda guachin tomatela";
+$varsesion=$sesion->validar2();
+$rol=$sesion->getRol();
+//$admin=$rol->getusnombre();
+
+//echo $admin;
+//echo print_r($rol);
+if ($varsesion==false){
+  
     header("Location:../Vista/login.php");
-}
-echo "log: ".$varsesion;
+}else{
+    $objuser=$sesion->getUsuario2();
+    $user=$objuser[0];
+    $unuser=$user->getusnombre();
+    echo "<p class=''><b>BIENVENIDO ".$unuser."</p>";
+   
+ }
+
 //echo "<a href='".$sesion->cerrar()."'>Cerrar Sesion </a>";
 ?>
 <html>
 
 <head>
     <!-- Required meta tags -->
-    <a href="./cerrar_session.php">Cerrar Sesion </a>
-
+    <!-- <a href="./cerrar_session.php">Cerrar Sesion </a> -->
+    <p>
+    <a href='./cerrar_session.php' class='btn btn-info btn-lg'>
+      <span class='glyphicon glyphicon-log-out'></span> Cerrar Sesion
+    </a>
+  </p> 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <!-- Bootstrap CSS -->
     <link href="./css/4.5.2/bootstrap.min.css" rel="stylesheet"></link>
     <link href="./css/4.5.2/bootstrapValidator.min.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/estilo_tablas.css" rel="stylesheet"></link>
+    <link href="./css/4.5.2/estilo_login.css" rel="stylesheet"></link>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" rel="stylesheet"></link>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"></link>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
@@ -34,10 +51,24 @@ echo "log: ".$varsesion;
 </head>
 
 <body>
-
+<?php
+// Esto devolverá todos los archivos de esa carpeta
+$archivos = scandir("../archivos");
+$num=0;
+for ($i=2; $i<count($archivos); $i++)
+{$num++;
+?>
+<!-- Visualización del nombre del archivo !-->
+         
+    <tr>
+      <th scope="row"><?php echo $num;?></th>
+      <td><?php echo $archivos[$i]; ?></td>
+      <td><a title="Descargar Archivo" href="../archivos/<?php echo $archivos[$i];?>" download="<?php echo $archivos[$i]; ?>" style="color: blue; font-size:18px;"> <span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></a></td>
+    </tr>
+ <?php }?>
     <header>
 
-        <p>ESTE ES EL MENU</p>
+        <p></p>
     </header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="http://localhost/xampp/FAI-986FiDrive/Vista/contenido.php">MENU</a>

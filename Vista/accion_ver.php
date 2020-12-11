@@ -1,7 +1,7 @@
 
 <?php
 include_once "../Vista/estructura/cabecera.php";
-include_once "../Control/control_archivos.php";
+// include_once "../Control/control_archivos.php";
 ?>
 <div id="contenido" style="height: 100%; width: 100%; border: 2px solid green; border-radius:3px;">
 

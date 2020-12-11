@@ -180,8 +180,11 @@ class archivocargado {
             if($res>-1){
                 if($res>0){
                     $row = $base->Registro();
+                    $objusuario=new usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
                     $this->setear($row['idarchivocargado'], $row['acnombre'], 
-                    $row['acdescripcion'], $row['acicono'], $row['idusuario'], 
+                    $row['acdescripcion'], $row['acicono'], $objusuario, 
                     $row['aclinkacceso'], $row['accantidaddescarga'], 
                     $row['accantidadusada'], $row['acfechainiciocompartir'], 
                     $row['acefechafincompartir'], $row['acprotegidoclave']);
@@ -253,6 +256,44 @@ class archivocargado {
         }
         return $resp;
     }
+
+    public function modificar_cantdescargas(){
+        $resp = false;
+        $base=new BaseDatos();
+     
+        $sql="UPDATE archivocargado SET accantidaddescarga='".$this->getaccantidaddescarga()."', aclinkacceso='".$this->getaclinkacceso()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
+      echo $sql;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
+
+    
+    public function modificar_fincompartir(){
+        $resp = false;
+        $base=new BaseDatos();
+     
+        $sql="UPDATE archivocargado SET acefechafincompartir='".$this->getacefechafincompartir()."' WHERE idarchivocargado='".$this->getidarchivocargado()."'";
+      echo $sql;
+        if ($base->Iniciar()) {
+            if ($base->Ejecutar($sql)) {
+                $resp = true;
+            } else {
+                $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+            }
+        } else {
+            $this->setmensajeoperacion("fidrive->modificar: ".$base->getError());
+        }
+        return $resp;
+    }
+    
     
 
     
@@ -280,7 +321,7 @@ class archivocargado {
         $sql="SELECT * FROM archivocargado "; 
         if ($parametro!="") {
             $sql.='WHERE '.$parametro;
-          //  echo $sql;
+           echo $sql;
         }
         $res = $base->Ejecutar($sql);
         if($res>-1){
@@ -290,11 +331,15 @@ class archivocargado {
                     $obj= new archivocargado();
                     $archivocargado= new archivocargado();
                     $archivocargado->setidarchivocargado($row['idarchivocargado']);
+                    $archivocargado->setaclinkacceso($row['aclinkacceso']);
+                    $archivocargado->setaccantidaddescarga($row['accantidaddescarga']);
                     $archivocargado->cargar();
+                    $objusuario=new usuario();
+                    $objusuario->setidusuario($row['idusuario']);
+                    $objusuario->cargar();
                     //$idarchivocargado=$archivocargado->getidarchivocargado();
                     $obj->setear($row['idarchivocargado'],$row['acnombre'], 
-                    $row['acdescripcion'], $row['acicono'], $row['idusuario'], 
-                    $row['aclinkacceso'], $row['accantidaddescarga'], 
+                    $row['acdescripcion'], $row['acicono'], $objusuario, $row['aclinkacceso'], $row['accantidaddescarga'], 
                     $row['accantidadusada'], $row['acfechainiciocompartir'], 
                     $row['acefechafincompartir'], $row['acprotegidoclave']);
                     array_push($arreglo, $obj);
@@ -345,13 +390,14 @@ class archivocargado {
     }
 
 
-    public static function listar_compartido($parametro=""){
+    public static function listar_compartido($id){
+        echo $id;
         $arreglo = array();
         $base=new BaseDatos();
-        $sql="SELECT * FROM archivocargado inner join archivocargadoestado on archivocargado.idarchivocargado=archivocargadoestado.idarchivocargado where archivocargadoestado.idestadotipos=2 "; 
+        $sql="SELECT * FROM archivocargado inner join archivocargadoestado on archivocargado.idarchivocargado=archivocargadoestado.idarchivocargado where archivocargadoestado.idestadotipos=2 and archivocargado.idusuario=".$id; 
         // if ($parametro!="") {
         //     $sql.='WHERE '.$parametro;
-        //   //  echo $sql;
+ //echo $sql;
         // }
         $res = $base->Ejecutar($sql);
         if($res>-1){
@@ -380,13 +426,50 @@ class archivocargado {
         return $arreglo;
     }
 
-    public static function listar_disponible($parametro=""){
+    public static function listar_compartido_admin(){
+        echo $id;
         $arreglo = array();
         $base=new BaseDatos();
-        $sql="SELECT * FROM archivocargado inner join archivocargadoestado on archivocargado.idarchivocargado=archivocargadoestado.idarchivocargado where archivocargadoestado.idestadotipos!=4 "; 
+        $sql="SELECT * FROM archivocargado inner join archivocargadoestado on archivocargado.idarchivocargado=archivocargadoestado.idarchivocargado where archivocargadoestado.idestadotipos=2"; 
         // if ($parametro!="") {
         //     $sql.='WHERE '.$parametro;
-        //   //  echo $sql;
+ //echo $sql;
+        // }
+        $res = $base->Ejecutar($sql);
+        if($res>-1){
+            if($res>0){
+                										
+                while ($row = $base->Registro()){
+                    $obj= new archivocargado();
+                    $archivocargado= new archivocargado();
+                    $archivocargado->setidarchivocargado($row['idarchivocargado']);
+                    $archivocargado->cargar();
+                    //$idarchivocargado=$archivocargado->getidarchivocargado();
+                    $obj->setear($row['idarchivocargado'],$row['acnombre'], 
+                    $row['acdescripcion'], $row['acicono'], $row['idusuario'], 
+                    $row['aclinkacceso'], $row['accantidaddescarga'], 
+                    $row['accantidadusada'], $row['acfechainiciocompartir'], 
+                    $row['acefechafincompartir'], $row['acprotegidoclave']);
+                    array_push($arreglo, $obj);
+                }
+               
+            }
+            
+        } else {
+           // $this->setmensajeoperacion("archivocargado->listar: ".$base->getError());
+        }
+ 
+        return $arreglo;
+    }
+
+    public static function listar_disponible($parametro){
+       // echo "acaa parametro ".$parametro;
+        $arreglo = array();
+        $base=new BaseDatos();
+        $sql="SELECT * FROM archivocargado inner join archivocargadoestado on archivocargado.idarchivocargado=archivocargadoestado.idarchivocargado where archivocargadoestado.idestadotipos!=4 AND archivocargado.idusuario=".$parametro; 
+        // if ($parametro!="") {
+        //     $sql.='WHERE '.$parametro;
+         echo $sql;
         // }
         $res = $base->Ejecutar($sql);
         if($res>-1){

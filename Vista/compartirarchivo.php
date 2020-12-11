@@ -9,29 +9,50 @@ Etiqueta para mostrar el link de compartir generado
 Botón que permite generar un hash que sera el acceso para compartir el archivo -->
 <?php
 include_once "./estructura/cabecera.php";
-include_once "../Control/abmusuario.php";
-include_once "../Control/abmarchivocargado.php";
-include_once "../Control/control_archivos.php";
+// include_once "../Control/abmusuario.php";
+// include_once "../Control/abmarchivocargado.php";
+// include_once "../Control/control_archivos.php";
 ?>
-<div id="contenido" style="height: 100%; width: 100%; border: 2px solid red; border-radius:3px;">
+<div id="contenido" style="margin-left: auto; border: 0px solid green; border-radius:3px;">
 
-<?php
+  <?php
   $objabmarchivocargado = new abmarchivocargado();
-  $listaarchivocargado = $objabmarchivocargado->buscar_disponibles(null);
+  foreach ($sesion->getUsuario2() as $unObjeto1) {
+    $id = $unObjeto1->getidusuario();
+    echo "<input id='idusuario' name='idusuario' type='hidden' value='" . $id . "'>";
+  }
+  $listaarchivocargado = $objabmarchivocargado->buscar_disponibles($id);
   $obj = new control_archivos();
   //$msg = $obj->verInformacion($_POST);
   ?>
   <h3>Mostrando Archivos Cargados</h3>
   <!-- <strong><?php echo $msg ?></strong> -->
 
-  <form id="form" name="form" action="accion_compartir.php" method="get" data-toggle="validator">
+  <form id="form" name="form" action="accion_compartir.php" method="post" data-toggle="validator">
 
-  <table border="1">
+
+  <div class="table-responsive">
+    <table class="table" border="0">
       <?php
       if (count($listaarchivocargado) > 0) {
+
+        echo '<thead> <tr>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Formato</th>
+        <th>ID Usuario</th>
+        <th>Acceso Link</th>
+        <th>Cantidad de Descargas Habilitadas</th>
+        <th>Cantidad de descargas Usadas</th>
+        <th>Fecha Inicio Compartir</th>
+        <th>Fecha Fin Compartir</th>
+        <th></th>
+     
+        </tr>
+        </thead>';
         foreach ($listaarchivocargado as $objarchivocargado) {
 
-          echo '<tr><td value="' . $objarchivocargado->getacnombre() . '" style="width:100px;">' . $objarchivocargado->getacnombre() .
+          echo '<tr><td value="' . $objarchivocargado->getacnombre() .'" style="width:100px;">' . $objarchivocargado->getacnombre() .
             '<td style="width:100px;">' . $objarchivocargado->getacdescripcion() .
             '<td style="width:100px;">' . $objarchivocargado->getacicono() .
             '<td style="width:100px;">' . $objarchivocargado->getidusuario() .
@@ -40,10 +61,11 @@ include_once "../Control/control_archivos.php";
             '<td style="width:100px;">' . $objarchivocargado->getaccantidadusada() .
             '<td style="width:100px;">' . $objarchivocargado->getacfechainiciocompartir() .
             '<td style="width:100px;">' . $objarchivocargado->getacefechafincompartir() .
-           // '<td style="width:100px;">' . $objarchivocargado->getacprotegidoclave() .
+            // '<td style="width:100px;">' . $objarchivocargado->getacprotegidoclave() .
             '</td>';
-
-          echo '<td> <input type="radio" onchange="capturar_radio()" id="datos" name="acnombre" value="' . $objarchivocargado->getacnombre() .'"><b>COMPARTIR<b></td></tr>';
+            
+          echo '<td><input type="radio" id="datos" name="acnombre" value="'.$objarchivocargado->getacnombre().'"><b> COMPARTIR</b></td>';
+         // echo '<td><a href="./accion_compartir.php?acnombre='.$objarchivocargado->getacnombre().'&acdescripcion='.$objarchivocargado->getacdescripcion().'&acicono='.$objarchivocargado->getacicono().'&idusuario='.$objarchivocargado->getidusuario().'">compartir</a></td>';
 
 
           // echo '<td><a href="./accion_eliminar.php?idarchivocargado='.$objarchivocargado->getidarchivocargado().'&acnombre='.$objarchivocargado->getacnombre().'">borrar</a></td></tr>'; 
@@ -52,13 +74,14 @@ include_once "../Control/control_archivos.php";
         }
       }
       ?>
-
-    </table>
+         </table>
+  </div>
+  
 
     <div class="row">
       <!-- fila -->
 
-      
+
       <div class="col-md-0 mb-1">
         <label for="clave" class="control-label"> </label>
         <input id="idestadotipos" name="idestadotipos" type="hidden" value="2">
@@ -73,9 +96,16 @@ include_once "../Control/control_archivos.php";
         </div>
       </div>
 
+      <!-- <div class="col-md-0 mb-1">
+        <label for="clave" class="control-label"> </label>
+        <input id="acfechafincompartir" name="acefechafincompartir" type="hidden" value="0000-00-00 00:00:00">
+        <div class="invalid-feedback">
+        </div>
+      </div> -->
+
       <!-- <div class="col-md-3 mb-3"> -->
-        <!-- grupo de control para todas las pantallas medianas y large mide 6, mb es margen b es botton -3 -->
-        <!-- <label for="nombre" class="control-label">Nombre del Archivo</label>
+      <!-- grupo de control para todas las pantallas medianas y large mide 6, mb es margen b es botton -3 -->
+      <!-- <label for="nombre" class="control-label">Nombre del Archivo</label>
         <input class="form-control" id="acnombre" name="acnombre" placeholder="1234.png" type="text" required>
         <div class="invalid-feedback">
         </div>
@@ -90,24 +120,24 @@ include_once "../Control/control_archivos.php";
 
       <div class="col-md-2 mb-3">
         <label for="descargas">Cantidad de descargas posibles</label>
-        <input type="number" class="form-control" id="descargas" name="descargas" required>
+        <input type="number" class="form-control" id="accantidaddescarga" name="accantidaddescarga" required>
         <div class="invalid-feedback">
         </div>
       </div>
 
-      <div class="col-md-3 mb-3">
-      <?php
-         foreach($sesion->getUsuario2() as $unObjeto1){
-          $id=$unObjeto1->getidusuario();
-         echo "<input id='idusuario' name='idusuario' type='hidden' value='".$id."'>";
-           }
-      //  $select = new abmusuario();
+      <div class="">
+        <?php
+        foreach ($sesion->getUsuario2() as $unObjeto1) {
+          $id = $unObjeto1->getidusuario();
+          echo "<input id='idusuario' name='idusuario' type='hidden' value='" . $id . "'>";
+        }
+        //  $select = new abmusuario();
         //$objSelect = $select->buscar(null);
 
-       // echo  " <select class='form-control' name='idusuario' id='idusuario'>";
-       // echo  " <option value=' '>Seleccion un Usuario</option>";
+        // echo  " <select class='form-control' name='idusuario' id='idusuario'>";
+        // echo  " <option value=' '>Seleccion un Usuario</option>";
         //foreach ($objSelect as $unObjeto) {
-          //echo  " <option name='idusuario' id='idusuario' value='" . $unObjeto->getidusuario() . "'>" . $unObjeto->getusapellido() . "</option>";
+        //echo  " <option name='idusuario' id='idusuario' value='" . $unObjeto->getidusuario() . "'>" . $unObjeto->getusapellido() . "</option>";
         //}
         //echo  " </select>";
         ?>
@@ -117,8 +147,8 @@ include_once "../Control/control_archivos.php";
       </div>
 
 
-          <div class="col-md-3 mb-3">
-        <b>Proteger con contraseña?</b>
+      <div class="col-md-3 mb-3">
+        <p>Proteger con contraseña?</p>
         <input type="checkbox" name="check" id="check" value="1" onchange="javascript:showContent()" />
 
         <div class="input-group">
@@ -146,13 +176,13 @@ include_once "../Control/control_archivos.php";
 
 
       <div class="col-md-3 mb-3">
-      <!-- <label for="compartir" class="control-label">Link para compartir generado</label>
+        <!-- <label for="compartir" class="control-label">Link para compartir generado</label>
       <input type="text" class="form-control text-wrap" id="compartir" name="compartir">
       </input> -->
-      <input id="btn_eje4" class="btn btn-primary" onclick="hash()" name="hash" id="hash" type="submit" value="Compartir y Generar HASH">
-      <div class="invalid-feedback">
+        <input type="submit" id="btn_eje4" class="btn btn-primary" onclick="hash()" name="hash" id="hash" value="Compartir y Generar HASH">
+        <div class="invalid-feedback">
+        </div>
       </div>
-    </div>
 
 
 
@@ -161,7 +191,7 @@ include_once "../Control/control_archivos.php";
 
 
 
- 
+
 
     <div class="row">
 
@@ -177,9 +207,11 @@ include_once "../Control/control_archivos.php";
 
 
 
-    
 
-  </form>
+
+  </form> 
+
+
 </div>
 
 

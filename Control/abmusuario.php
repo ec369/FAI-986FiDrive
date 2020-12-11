@@ -62,8 +62,23 @@ class abmusuario{
         
     }
 
-    public function buscarlogin($param){
+    public function buscar_activo($param){
     
+        $where = " true ";
+        if ($param<>NULL){
+          
+            if  (isset($param['idusuario']))
+                $where.=" and idusuario ='".$param['idusuario']."'";
+           
+        }
+        $arreglo = usuario::listar($where);  
+        return $arreglo;
+ 
+        
+    }
+
+    public function buscarlogin($param){
+    //echo $param;
         $where = " true ";
         if ($param<>NULL){
           
@@ -71,10 +86,27 @@ class abmusuario{
                 $where.=" and usnombre ='".$param['usnombre']."'";
            
         }
-        $arreglo = usuario::listar($where);  
+        $arreglo = usuario::listar_ac($where);  
         return $arreglo;
             
     }
+
+   
+
+    public function modificacion($param){
+        //echo "Estoy en modificacion";
+        $resp = false;
+        if ($this->seteadosCamposClaves($param)){
+            
+            $elObjtarchivocargadoestado = $this->cargarObjeto($param);
+          
+            if($elObjtarchivocargadoestado!=null and $elObjtarchivocargadoestado->modificar_activo()){
+                $resp = true;
+            }
+        }
+        return $resp;
+    }
+
     
     public function alta($param){
         $resp = false;

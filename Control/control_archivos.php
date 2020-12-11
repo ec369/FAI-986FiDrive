@@ -32,8 +32,8 @@ class control_archivos
         $msg = null;
         if (isset($_POST["directorio"])) {
             $carpeta = htmlspecialchars($_POST["carpeta"]);
-            $ruta = htmlspecialchars($_POST["ruta"]);
-            $directorio = "../archivos/" . $ruta . $carpeta;
+           // $ruta = htmlspecialchars($_POST["ruta"]);
+            $directorio = "../archivos/" .  $carpeta;   //antes de carpeta estaba $ruta .
 
             if (!is_dir($directorio)) {
                 $crear = mkdir($directorio, 0777, true);
@@ -75,7 +75,6 @@ class control_archivos
     }
     return $msg;
 } */
-
 
 
 

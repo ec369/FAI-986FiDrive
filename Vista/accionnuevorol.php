@@ -3,25 +3,19 @@ include_once '../configuracion.php';
 $datos = data_submitted();
 //verEstructura($datos);
 $resp = false;
-$objusuario = new abmusuario();
-$buscado=$objusuario->buscarlogin($datos);
-$clave=$datos['usclave'];
-$datos['usclave']=md5($clave);
+$objTrans = new abmrol();
+    
+    
     if($datos['accion']=='nuevo'){
-        if (count($buscado)>0){
-
-        }else{
-        if($objusuario->alta($datos))
+        if($objTrans->alta($datos)){
             $resp =true;
         }
-
-
+        
     }
- 
     if($resp){
         $mensaje = "La accion ".$datos['accion']." se realizo correctamente.";
     }else {
-        $mensaje = "La accion ".$datos['accion']." no pudo concretarse. Nombre de usuario no disponible";
+        $mensaje = "La accion ".$datos['accion']." no pudo concretarse.";
     }
     
 
@@ -35,7 +29,7 @@ $datos['usclave']=md5($clave);
 </head>
 <body>
 <h3>Tabla</h3>
-<br><a href="../Vista/nuevousuario.php">Volver</a><br>
+<br><a href="../listarrol.php">Volver</a><br>
 
 <?php	
 echo $mensaje;
