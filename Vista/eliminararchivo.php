@@ -32,7 +32,7 @@ include_once "./estructura/cabecera.php";
    
     }
 
-  if ($idrol==1){
+  if (($idrol==1) or ($id==1)){
    // echo "entra admin";
     $listaarchivocargadoadmin = $objabmarchivocargado->buscar_compartido_admin();
     $obj = new control_archivos();

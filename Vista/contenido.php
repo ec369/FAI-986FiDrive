@@ -27,14 +27,14 @@ include_once "../Control/abmarchivocargado.php"; */
    //echo "acaaaa objeto rolopoooooooooooooo";
    //echo print_r ($rol);
    $idrol=$rol->getidrol();
-
+    
    echo "acaaaa id rolaso". $idrol;
 
     //echo "<input id='idusuario' name='idusuario' type='hidden' value='" . $id . "'>";
  
   }
 
-  if ($idrol==1){
+  if (($idrol==1) or ($id==1)){
     echo "entra if";
     $listaarchivocargadoadmin = $objabmarchivocargado->buscar(true);
     $objusuario=new abmusuario;

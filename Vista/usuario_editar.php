@@ -3,6 +3,13 @@
 // include_once "../Control/abmarchivocargado.php";
 include_once "../Vista/estructura/cabecera.php";
 
+$objabmarchivocargado = new abmarchivocargado();
+foreach ($sesion->getUsuario2() as $unObjeto1) {
+  $id = $unObjeto1->getidusuario();
+
+  echo "<input id='idusuario' name='idusuario' type='hidden' value='" . $id . "'>";
+  echo "el id" . $id;
+}
 
 foreach ($sesion->getrol() as $unObjetorol) {
     //echo "acaaaa objeto";
@@ -19,7 +26,7 @@ foreach ($sesion->getrol() as $unObjetorol) {
     }
   
 
-if ($idrol==1){
+if (($idrol==1) or ($id==1)){
     
 
 $objusuario = new abmusuario();
